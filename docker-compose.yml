@@ -1,0 +1,7 @@
+services:
+  pipeline:
+    build: .
+    volumes:
+      - ./data:/app/data
+    command: ["--sample", "--year", "2024", "--month", "1"]
+

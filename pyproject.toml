@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nyc-taxi-de-pipeline"
+version = "0.1.0"
+description = "A local-first, production-shaped data engineering pipeline for NYC taxi analytics."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "duckdb>=1.1,<2",
+  "prefect>=3.0,<4",
+  "requests>=2.32,<3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.9,<1"]
+
+[project.scripts]
+taxi-pipeline = "taxi_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
